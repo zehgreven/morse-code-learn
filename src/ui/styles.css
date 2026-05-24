@@ -121,6 +121,8 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
   cursor: pointer;
   user-select: none;
   touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   transition: background 0.1s, transform 0.1s;
 }
 
