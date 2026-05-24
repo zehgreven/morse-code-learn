@@ -17,7 +17,6 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
 /* --- Tree --- */
 #tree {
   width: 100%;
-  overflow-x: auto;
   padding: 8px 0 16px;
   display: flex;
   justify-content: center;
@@ -25,8 +24,6 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
 
 .tree-wrapper {
   position: relative;
-  width: 720px;  /* 9 cols * 80px */
-  height: 432px; /* 9 rows * 48px */
   flex-shrink: 0;
 }
 
@@ -57,20 +54,15 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: repeat(9, 80px);
-  grid-template-rows: repeat(9, 48px);
 }
 
-/* Base node — rectangle (dash-reached) */
+/* Base node — size and font-size set dynamically by tree-renderer.js */
 .tree-node {
-  width: 34px;
-  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: center;
   justify-self: center;
-  font-size: 0.78rem;
   font-weight: bold;
   border: 2px solid #445;
   background: #16213e;
@@ -168,4 +160,24 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
   color: #778;
   font-family: inherit;
   font-size: 0.72rem;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* touch device — hide keyboard shortcuts hint */
+  .keyboard-hint { display: none; }
+}
+
+@media (max-width: 480px) {
+  body { gap: 16px; padding: 16px 12px; }
+
+  h1 { font-size: 1.1rem; }
+
+  #morse-btn {
+    width: 150px;
+    height: 150px;
+    font-size: 1rem;
+  }
+
+  #sequence { font-size: 1.3rem; }
+  #output   { font-size: 1.1rem; }
 }
