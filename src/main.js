@@ -45,8 +45,17 @@ btn.addEventListener('morse:word', () => {
   display.appendSpace();
 });
 
-clearBtn.addEventListener('click', () => {
+function handleClear() {
   display.clear();
   tree.reset();
   currentSequence = [];
+}
+
+clearBtn.addEventListener('click', handleClear);
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Backspace') {
+    e.preventDefault();
+    handleClear();
+  }
 });

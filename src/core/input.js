@@ -55,9 +55,23 @@ export function attachInput(element) {
     scheduleLetterEnd();
   }
 
+  function onKeyDown(e) {
+    if (e.code !== 'Space' || e.repeat) return;
+    e.preventDefault();
+    onPressStart(e);
+  }
+
+  function onKeyUp(e) {
+    if (e.code !== 'Space') return;
+    e.preventDefault();
+    onPressEnd(e);
+  }
+
   element.addEventListener('pointerdown', onPressStart);
   element.addEventListener('pointerup', onPressEnd);
   element.addEventListener('pointerleave', onPressEnd);
+  window.addEventListener('keydown', onKeyDown);
+  window.addEventListener('keyup', onKeyUp);
 
   return {
     destroy() {
@@ -65,6 +79,8 @@ export function attachInput(element) {
       element.removeEventListener('pointerdown', onPressStart);
       element.removeEventListener('pointerup', onPressEnd);
       element.removeEventListener('pointerleave', onPressEnd);
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
     },
   };
 }
