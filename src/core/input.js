@@ -39,6 +39,7 @@ export function attachInput(element) {
     e.preventDefault();
     clearTimers();
     pressStart = Date.now();
+    element.dispatchEvent(new CustomEvent('morse:pressstart'));
   }
 
   function onPressEnd(e) {
@@ -47,6 +48,8 @@ export function attachInput(element) {
 
     const duration = Date.now() - pressStart;
     pressStart = null;
+
+    element.dispatchEvent(new CustomEvent('morse:pressend'));
 
     const signal = classifyPress(duration);
     sequence.push(signal);

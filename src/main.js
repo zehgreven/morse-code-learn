@@ -1,7 +1,7 @@
 import './ui/styles.css';
 import { attachInput } from './core/input.js';
 import { decode } from './core/decoder.js';
-import { playTone } from './core/audio.js';
+import { startTone, stopTone } from './core/audio.js';
 import { createDisplay } from './ui/display.js';
 import { renderTree } from './ui/tree-renderer.js';
 
@@ -20,11 +20,13 @@ let currentSequence = [];
 
 const input = attachInput(btn);
 
+btn.addEventListener('morse:pressstart', () => startTone());
+btn.addEventListener('morse:pressend', () => stopTone());
+
 btn.addEventListener('morse:signal', (e) => {
   const { signal } = e.detail;
   currentSequence.push(signal);
 
-  playTone(signal);
   display.updateSequence(currentSequence);
   tree.highlight(currentSequence);
 

@@ -1,8 +1,9 @@
 const TONE_FREQUENCY = 600; // Hz — standard Morse tone
-const DOT_DURATION = 0.1;   // seconds
-const DASH_DURATION = 0.3;  // seconds
+const FADE_OUT = 0.01;      // seconds — short ramp to avoid click on release
 
 let audioCtx = null;
+let oscillator = null;
+let gain = null;
 
 function getContext() {
   if (!audioCtx) audioCtx = new AudioContext();
@@ -10,25 +11,39 @@ function getContext() {
 }
 
 /**
- * Plays a Morse tone for the given signal type.
- * @param {'dot' | 'dash'} signal
+ * Starts a continuous Morse tone. Call stopTone() to end it.
  */
-export function playTone(signal) {
-  const ctx = getContext();
-  const duration = signal === 'dot' ? DOT_DURATION : DASH_DURATION;
+export function startTone() {
+  if (oscillator) return; // already playing
 
-  const oscillator = ctx.createOscillator();
-  const gain = ctx.createGain();
+  const ctx = getContext();
+
+  oscillator = ctx.createOscillator();
+  gain = ctx.createGain();
 
   oscillator.connect(gain);
   gain.connect(ctx.destination);
 
   oscillator.type = 'sine';
   oscillator.frequency.setValueAtTime(TONE_FREQUENCY, ctx.currentTime);
-
   gain.gain.setValueAtTime(1, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
 
   oscillator.start(ctx.currentTime);
-  oscillator.stop(ctx.currentTime + duration);
+}
+
+/**
+ * Stops the continuous Morse tone with a short fade to avoid clicks.
+ */
+export function stopTone() {
+  if (!oscillator) return;
+
+  const ctx = getContext();
+  const now = ctx.currentTime;
+
+  gain.gain.setValueAtTime(gain.gain.value, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + FADE_OUT);
+
+  oscillator.stop(now + FADE_OUT);
+  oscillator = null;
+  gain = null;
 }
