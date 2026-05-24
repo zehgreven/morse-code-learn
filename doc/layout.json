@@ -1,0 +1,133 @@
+{
+  "raiz": "Antena (Topo Central)",
+  "esquerda": {
+    "letra": "T",
+    "formato_visual": "Retângulo",
+    "direcao_fisica": "Esquerda horizontal a partir da Antena",
+    "esquerda": {
+      "letra": "M",
+      "formato_visual": "Retângulo",
+      "direcao_fisica": "Esquerda horizontal a partir do T",
+      "esquerda": {
+        "letra": "O",
+        "formato_visual": "Retângulo",
+        "direcao_fisica": "Esquerda horizontal a partir do M"
+      },
+      "baixo": {
+        "letra": "G",
+        "formato_visual": "Círculo",
+        "direcao_fisica": "Linha vertical para baixo a partir do M",
+        "esquerda": {
+          "letra": "Q",
+          "formato_visual": "Retângulo",
+          "direcao_fisica": "Esquerda horizontal a partir do G"
+        },
+        "baixo": {
+          "letra": "Z",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Linha vertical para baixo a partir do G"
+        }
+      }
+    },
+    "baixo": {
+      "letra": "N",
+      "formato_visual": "Círculo",
+      "direcao_fisica": "Linha vertical longa para baixo a partir do T",
+      "esquerda": {
+        "letra": "K",
+        "formato_visual": "Retângulo",
+        "direcao_fisica": "Esquerda horizontal a partir do N",
+        "esquerda": {
+          "letra": "Y",
+          "formato_visual": "Retângulo",
+          "direcao_fisica": "Esquerda horizontal a partir do K"
+        },
+        "baixo": {
+          "letra": "C",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Linha vertical para baixo a partir do K"
+        }
+      },
+      "baixo": {
+        "letra": "D",
+        "formato_visual": "Círculo",
+        "direcao_fisica": "Linha vertical para baixo seguindo a partir do N",
+        "esquerda": {
+          "letra": "X",
+          "formato_visual": "Retângulo",
+          "direcao_fisica": "Esquerda horizontal a partir do D"
+        },
+        "baixo": {
+          "letra": "B",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Linha vertical para baixo a partir do D"
+        }
+      }
+    }
+  },
+  "direita": {
+    "letra": "E",
+    "formato_visual": "Círculo (LED Verde)",
+    "direcao_fisica": "Direita horizontal a partir da Antena",
+    "baixo": {
+      "letra": "A",
+      "formato_visual": "Retângulo (LED Amarelo)",
+      "direcao_fisica": "Linha vertical longa para baixo a partir do E",
+      "baixo": {
+        "letra": "W",
+        "formato_visual": "Retângulo",
+        "direcao_fisica": "Linha vertical para baixo seguindo a partir do A",
+        "direita": {
+          "letra": "P",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Direita horizontal a partir do W"
+        },
+        "baixo": {
+          "letra": "J",
+          "formato_visual": "Retângulo",
+          "direcao_fisica": "Linha vertical para baixo a partir do W"
+        }
+      },
+      "direita": {
+        "letra": "R",
+        "formato_visual": "Círculo (LED Amarelo)",
+        "direcao_fisica": "Direita horizontal a partir do A",
+        "direita": {
+          "letra": "L",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Direita horizontal a partir do R"
+        }
+      }
+    },
+    "direita": {
+      "letra": "I",
+      "formato_visual": "Círculo",
+      "direcao_fisica": "Direita horizontal a partir do E",
+      "baixo": {
+        "letra": "U",
+        "formato_visual": "Retângulo",
+        "direcao_fisica": "Linha vertical para baixo a partir do I",
+        "baixo": {
+          "letra": "F",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Linha vertical para baixo a partir do U"
+        }
+      },
+      "direita": {
+        "letra": "S",
+        "formato_visual": "Círculo",
+        "direcao_fisica": "Direita horizontal a partir do I",
+        "baixo": {
+          "letra": "V",
+          "formato_visual": "Retângulo",
+          "direcao_fisica": "Linha vertical para baixo a partir do S"
+        },
+        "direita": {
+          "letra": "H",
+          "formato_visual": "Círculo",
+          "direcao_fisica": "Direita horizontal a partir do S"
+        }
+      }
+    }
+  }
+}

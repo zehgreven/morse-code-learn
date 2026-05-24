@@ -1,0 +1,153 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
+
+/* --- Tree --- */
+#tree {
+  width: 100%;
+  overflow-x: auto;
+  padding: 8px 0 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.tree-wrapper {
+  position: relative;
+  width: 720px;  /* 9 cols * 80px */
+  height: 432px; /* 9 rows * 48px */
+  flex-shrink: 0;
+}
+
+/* SVG lines layer — sits behind the grid nodes */
+.tree-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.tree-line {
+  stroke: #334;
+  stroke-width: 2;
+}
+
+.tree-antenna-label {
+  fill: #556;
+  font-size: 9px;
+  font-family: 'Courier New', monospace;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Grid layer — sits on top of SVG */
+.tree-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(9, 80px);
+  grid-template-rows: repeat(9, 48px);
+}
+
+/* Base node — rectangle (dash-reached) */
+.tree-node {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  font-size: 0.78rem;
+  font-weight: bold;
+  border: 2px solid #445;
+  background: #16213e;
+  color: #ccc;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+/* Circle = dot-reached */
+.tree-node--circle {
+  border-radius: 50%;
+}
+
+.tree-node.active {
+  background: #f4d03f;
+  color: #1a1a2e;
+  border-color: #f4d03f;
+  box-shadow: 0 0 10px #f4d03f88;
+}
+
+/* --- Display --- */
+#display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+}
+
+#sequence {
+  font-size: 1.6rem;
+  letter-spacing: 0.3em;
+  min-height: 2rem;
+  color: #a0c4ff;
+}
+
+#output {
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  min-height: 2rem;
+  word-break: break-all;
+  text-align: center;
+}
+
+/* --- Button --- */
+#morse-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #a0c4ff;
+  background: #16213e;
+  color: #a0c4ff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.1s, transform 0.1s;
+}
+
+#morse-btn:active,
+#morse-btn.pressed {
+  background: #a0c4ff;
+  color: #1a1a2e;
+  transform: scale(0.95);
+}
+
+#clear-btn {
+  background: none;
+  border: 1px solid #555;
+  color: #888;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8rem;
+}
+
+#clear-btn:hover { border-color: #aaa; color: #ccc; }

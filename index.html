@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morse Code Learn</title>
+</head>
+<body>
+  <h1>MORSE CODE</h1>
+
+  <div id="tree"></div>
+
+  <div id="display">
+    <div id="sequence" aria-label="Current morse sequence" aria-live="polite"></div>
+    <div id="output" aria-label="Decoded text" aria-live="polite"></div>
+  </div>
+
+  <button id="morse-btn" aria-label="Morse input button — tap for dot, hold for dash">TAP</button>
+  <button id="clear-btn" aria-label="Clear decoded text">CLEAR</button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
