@@ -14,6 +14,12 @@ body {
 
 h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
 
+.instructions {
+  font-size: 0.85rem;
+  color: #667;
+  letter-spacing: 0.05em;
+}
+
 /* --- Tree --- */
 #tree {
   width: 100%;
