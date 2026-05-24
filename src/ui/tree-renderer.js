@@ -103,12 +103,33 @@ export function renderTree(container) {
       svg.appendChild(line);
     }
 
-    const antennaText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    antennaText.setAttribute('x', cx(5));
-    antennaText.setAttribute('y', cy(1));
-    antennaText.setAttribute('class', 'tree-antenna-label');
-    antennaText.textContent = 'ANT';
-    svg.appendChild(antennaText);
+    
+    // Antenna symbol:
+    //  \  |  /
+    //   \ | /
+    //    \|/
+    //     |
+    const ax      = cx(5);
+    const juncY   = cy(1) + cellH * 0.1;   // \|/ junction
+    const mastBot = cy(2) - cellH * 0.1;   // bottom of mast → connects to tree
+    const tipY    = cy(1) - cellH * 0.32;  // top of arms and center line
+    const armW    = cellW * 0.32;
+
+    const antSegs = [
+      [ax, mastBot, ax,        juncY],   // mast (below junction)
+      [ax, juncY,   ax,        tipY ],   // center line (above junction)
+      [ax, juncY,   ax - armW, tipY ],   // left arm  \
+      [ax, juncY,   ax + armW, tipY ],   // right arm /
+      [ax - armW,   tipY, ax + armW, tipY], // top bar closing the shape
+    ];
+
+    for (const [x1, y1, x2, y2] of antSegs) {
+      const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      l.setAttribute('x1', x1); l.setAttribute('y1', y1);
+      l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+      l.setAttribute('class', 'tree-line');
+      svg.appendChild(l);
+    }
 
     wrapper.appendChild(svg);
 
