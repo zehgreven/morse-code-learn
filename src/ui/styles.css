@@ -151,3 +151,21 @@ h1 { font-size: 1.4rem; letter-spacing: 0.2em; color: #a0c4ff; }
 }
 
 #clear-btn:hover { border-color: #aaa; color: #ccc; }
+
+/* --- Keyboard hint --- */
+.keyboard-hint {
+  font-size: 0.75rem;
+  color: #556;
+  letter-spacing: 0.05em;
+}
+
+.keyboard-hint kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid #445;
+  border-radius: 3px;
+  background: #16213e;
+  color: #778;
+  font-family: inherit;
+  font-size: 0.72rem;
+}
